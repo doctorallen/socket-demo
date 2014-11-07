@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/jcarousel.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
+</head>
+<body>
+<div class="jcarousel">
+	<ul>
+		<li><img src="http://lorempixel.com/640/480/abstract"></li>
+		<li><img src="http://lorempixel.com/640/480/city"></li>
+		<li><img src="http://lorempixel.com/640/480/transport"></li>
+		<li><img src="http://lorempixel.com/640/480/animals"></li>
+		<li><img src="http://lorempixel.com/640/480/food"></li>
+		<li><img src="http://lorempixel.com/640/480/cats"></li>
+		<li><img src="http://lorempixel.com/640/480"></li>
+	</ul>
+</div>
+<div class="message"></div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.jcarousel').jcarousel();
+	});
+	var socket = io.connect();
+	console.log(socket);
+
+	socket.on('message', function(msg){
+		if(msg['admin-control'] == 'next'){
+			$('.jcarousel').jcarousel('scroll', '+=1');
+		}else{
+			$('.jcarousel').jcarousel('scroll', '-=1');
+
+		}
+		console.log(msg);
+	});
+</script>
+</html>

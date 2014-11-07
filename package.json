@@ -1,0 +1,9 @@
+{
+  "name": "node-demo",
+  "version": "0.0.1",
+  "description": "Basic demo of express and socket.io",
+  "dependencies": {
+    "express": "^4.10.1",
+    "socket.io": "^1.2.0"
+  }
+}
